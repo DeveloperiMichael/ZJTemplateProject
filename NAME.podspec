@@ -21,41 +21,37 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'http://192.168.6.115:7990/users/michael.zhang/repos/${POD_NAME}/browse'
+  s.homepage         = 'https://github.com/${USER_NAME}/${POD_NAME}'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { '${USER_NAME}' => '${USER_EMAIL}' }
-  s.source           = { :git => 'ssh://git@192.168.6.115:7999/~michael.zhang/${POD_NAME}.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/${USER_NAME}/${POD_NAME}.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '9.0'
 
-  #控制安装 Pod 的时候判断使用源码还是二进制库
-  $lib = ENV['use_lib']
-  $lib_name = ENV["#{s.name}_use_lib"]
-
-  if $lib || $lib_name
-  s.source = { :http => 'http://192.168.6.49/ios/${POD_NAME}/3.2/${POD_NAME}.zip' }
-  s.ios.vendored_libraries = "*.a"
-  s.source_files = '*.h'
-  s.resources = '${POD_NAME}.xcassets'
-  else
-  #源码
-  s.source = { :git => 'ssh://git@192.168.6.115:7999/xdwios/${POD_NAME}.git', :tag => s.version.to_s }
   s.source_files = '${POD_NAME}/Classes/**/*.{h,m}'
   s.resources = '${POD_NAME}/Assets/${POD_NAME}.xcassets'
-  end
 
-  s.dependency 'SAKit'
-  s.dependency 'SAFoundation'
-  s.dependency 'SAModuleService'
-  s.dependency 'SAConfig'
-  s.dependency 'SALocalizable'
-  s.dependency 'SANetwork'
-  s.dependency 'SANetworkHUD'
-  s.dependency 'SAGlobal'
-  s.dependency 'SALogin'
+#UI布局约束
+  s.dependency 'Masonry'
+
+#与H5交互
+  s.dependency 'WebViewJavascriptBridge'
+
+#图片加载
+  s.dependency 'SDWebImage'
+
+#列表分页加载
+  s.dependency 'MJRefresh'
+
+#键盘处理
+  s.dependency 'IQKeyboardManager'
+
+  s.dependency 'MBProgressHUD'
+
+  s.dependency 'SSToolkit'
 
   s.requires_arc = true
-
+  
 end
