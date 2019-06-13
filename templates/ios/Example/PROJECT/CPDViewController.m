@@ -7,11 +7,9 @@
 //
 
 #import "CPDViewController.h"
-#import <SAKit/SAKit.h>
-#import <SAModuleService/SAModuleService.h>
 
 
-@interface CPDViewController ()<UITableViewDelegate,UITableViewDataSource,SAViewControllerSceneProtocol>
+@interface CPDViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *componentArray;
@@ -20,13 +18,6 @@
 
 @implementation CPDViewController
 
-- (SANavigationBarStyle)navigationBarStyle {
-    return SANavigationBarStyleWhite;
-}
-
-- (BOOL)extendedToTop {
-    return YES;
-}
 
 - (void)viewDidLoad
 {
@@ -34,10 +25,10 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.automaticallyAdjustsScrollViewInsets = YES;
     self.view.backgroundColor = [UIColor whiteColor];
-    self.title = @"订购商品";
+    self.title = @"Main Controller";
     
     
-    self.componentArray = [NSArray arrayWithObjects:@"订购商品", @"采购车", @"注销", nil];
+    self.componentArray = [NSArray arrayWithObjects:@"TEST A", @"TEST B", @"TEST C", nil];
     
     [self.view addSubview:self.tableView];
     
@@ -66,7 +57,7 @@
     }
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
     cell.textLabel.text = self.componentArray[indexPath.row];
-    cell.textLabel.textColor = [UIColor sa_colorC1];
+    cell.textLabel.textColor = [UIColor brownColor];
     return cell;
 }
 
@@ -75,26 +66,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    switch (indexPath.row) {
-        case 0:
-        {
-//            UIViewController<CMOrderProductProtocol> *viewController = [SAServiceManager createServiceWithProtocol:@protocol(CMOrderProductProtocol)];
-//            viewController.sa_buId = @"10001719";
-//            [self.navigationController pushViewController:viewController animated:YES];
-        }
-            
-            break;
-        case 1:
-        {
-            
-        }
-            
-            break;
-        default:
-            //注销
-            [[NSNotificationCenter defaultCenter] postNotificationName:SALoginModuleNeedLogoutNotification object:nil];
-            break;
-    }
+    
 }
 
 
