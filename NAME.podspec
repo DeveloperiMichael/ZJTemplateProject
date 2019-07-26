@@ -33,24 +33,7 @@ TODO: Add long description of the pod here.
   s.source_files = '${POD_NAME}/Classes/**/*.{h,m}'
   s.resources = '${POD_NAME}/Assets/${POD_NAME}.xcassets'
 
-#UI布局约束
-  s.dependency 'Masonry'
 
-#与H5交互
-  s.dependency 'WebViewJavascriptBridge'
-
-#图片加载
-  s.dependency 'SDWebImage'
-
-#列表分页加载
-  s.dependency 'MJRefresh'
-
-#键盘处理
-  s.dependency 'IQKeyboardManager'
-
-  s.dependency 'MBProgressHUD'
-
-  s.dependency 'SSToolkit'
 
   s.requires_arc = true
   

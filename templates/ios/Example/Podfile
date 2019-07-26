@@ -2,7 +2,7 @@
 inhibit_all_warnings!
 
 source 'https://github.com/CocoaPods/Specs.git'
-
+source 'https://gitee.com/developermichael/ZJPrivateSpecs.git'
 
 platform:ios, '9.0'
 
