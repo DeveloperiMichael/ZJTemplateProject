@@ -8,6 +8,7 @@
 
 #import "CPDAppDelegate.h"
 #import "CPDViewController.h"
+#import <ZJModuleService/ZJModuleService.h>
 
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
@@ -26,23 +27,9 @@
     //设置 rootViewController
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
-    CPDViewController *controller = [[CPDViewController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
-    self.window.rootViewController = nav;
-    
-    [self.window makeKeyAndVisible];
+    [[ZJAppDelegateManager sharedInstance] trigger_applicationDidFinishLaunchingWithOptions:launchOptions];
     return YES;
 }
 
-
-
-// 注册APNs成功并上报DeviceToken
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
-    //注册deviceToken
-}
-
-- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
-    return UIInterfaceOrientationMaskAllButUpsideDown;
-}
 
 @end
