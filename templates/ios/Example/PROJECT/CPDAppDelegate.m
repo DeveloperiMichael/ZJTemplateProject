@@ -9,7 +9,7 @@
 #import "CPDAppDelegate.h"
 #import "CPDViewController.h"
 #import <ZJModuleService/ZJModuleService.h>
-
+#import <ZJAppConfig/ZJAppConfig.h>
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
 #endif
@@ -26,7 +26,7 @@
     
     //设置 rootViewController
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    
+    [[ZJAppConfiguration sharedInstance] zj_setupTarget:ZJTargetTypeWPUser environment:ZJEnvironmentTypeDevelopment];
     [[ZJAppDelegateManager sharedInstance] trigger_applicationDidFinishLaunchingWithOptions:launchOptions];
     return YES;
 }
