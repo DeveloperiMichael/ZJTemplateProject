@@ -12,6 +12,10 @@
 #import <ZJAppConfig/ZJAppConfig.h>
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
+#import <ZJAppConfig/ZJAppConfig.h>
+#import <WPLogin/WPLoginManager.h>
+#import <WPGlobal/WPGlobal.h>
+
 #endif
 
 @interface CPDAppDelegate ()<UNUserNotificationCenterDelegate>
@@ -26,42 +30,52 @@
     
     //设置 rootViewController
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    [self setupCommonRootViewController];
     
     
     
+    [[ZJAppConfiguration sharedInstance] zj_setupTarget:ZJTargetTypeWPUser environment:ZJEnvironmentTypeDevelopment];
+    
+    [self setLoginRootViewController];
+    
+    //[self setUnloginRootViewController];
+    
+    
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
 
-- (void)setupLoginRootViewController {
-    
-    [[ZJAppConfiguration sharedInstance] zj_setupTarget:ZJTargetTypeWPUser environment:ZJEnvironmentTypeDevelopment];
-    
-    if (![WPLoginManager wp_isUserLogin]) {
+- (void)setLoginRootViewController {
+    if (![WPUserManager wp_isUserLogin]) {
         UIViewController <WPLoginServiceProtocol>*loginController = [ZJServiceManager createServiceWithProtocol:@protocol(WPLoginServiceProtocol)];
         UINavigationController *nav;
         if (loginController) {
             nav = [[UINavigationController alloc] initWithRootViewController:loginController];
             self.window.rootViewController = nav;
         }
-        [self.window makeKeyAndVisible];
     } else {
-        [[ZJAppConfiguration sharedInstance] zj_setUserToken:[WPLoginManager wp_token]];
-        [[ZJAppDelegateManager sharedInstance] trigger_applicationDidFinishLaunchingWithOptions:launchOptions];
-        [self.window makeKeyAndVisible];
+        [[ZJAppConfiguration sharedInstance] zj_setUserToken:[WPUserManager wp_token]];
+        
+        id<ZJAppHomeProtocol> appHome = [ZJServiceManager createServiceWithProtocol:@protocol(ZJAppHomeProtocol)];
+        self.window.rootViewController = [appHome setupRootViewController];
     }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidLoginSuccess) name:kWPDidUserLoginSuccessNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidLoginSuccess:) name:kWPDidUserLoginSuccessNotification object:nil];
+    
 }
 
-- (void)setupCommonRootViewController {
-    //设置 rootViewController
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+- (void)setUnloginRootViewController {
     CPDViewController *vc = [[CPDViewController alloc] init];
     UINavigationController *nav;
     nav = [[UINavigationController alloc] initWithRootViewController:vc];
     self.window.rootViewController = nav;
+}
+
+- (void)appDidLoginSuccess:(NSNotification *)noti {
+    if (noti.object) {
+        id<ZJAppHomeProtocol> appHome = [ZJServiceManager createServiceWithProtocol:@protocol(ZJAppHomeProtocol)];
+        self.window.rootViewController = [appHome setupRootViewController];
+    }
 }
 
 @end
