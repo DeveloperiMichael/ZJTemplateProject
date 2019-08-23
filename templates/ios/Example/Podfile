@@ -10,7 +10,13 @@ target '${POD_NAME}_Example' do
   pod '${POD_NAME}', :path => '../'
 
   pod 'ZJModuleService', :git => 'https://gitee.com/developermichael/ZJModuleService.git'
+  pod 'ZJNetwork', :git => 'https://gitee.com/developermichael/ZJNetwork.git'
   pod 'WPKit', :git => 'https://gitee.com/developermichael/WPKit.git'
+  pod 'ZJAppConfig', :git => 'https://gitee.com/developermichael/ZJAppConfig.git'
+  pod 'WPLogin', :git => 'https://gitee.com/developermichael/WPLogin.git'
+  pod 'ZJFoundation', :git => 'https://gitee.com/developermichael/ZJFoundation.git'
+  pod 'WPWeakServiceComponent', :git => 'https://gitee.com/developermichael/WPWeakServiceComponent.git'
+  pod 'WPGlobal', :git => 'https://gitee.com/developermichael/WPGlobal.git'
 
 
   target '${POD_NAME}_Tests' do
