@@ -35,8 +35,11 @@ TODO: Add long description of the pod here.
 
   s.dependency 'ZJModuleService'
   s.dependency 'ZJNetwork'
-  s.dependency 'Masonry'
   s.dependency 'WPKit'
+  s.dependency 'ZJFoundation'
+  s.dependency 'WPGlobal'
+  s.dependency 'ZJAppConfig'
+  s.dependency 'WPRequestManager'
 
   s.requires_arc = true
   
