@@ -66,7 +66,22 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    switch (indexPath.row) {
+        case 0:
+        {
+            UIViewController<HPCommunityNewsProtocol> *vc = [ZJServiceManager createServiceWithProtocol:@protocol(HPCommunityShareProtocol)];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 1:
+        {
+            UIViewController<HPCommunityShareProtocol> *vc = [ZJServiceManager createServiceWithProtocol:@protocol(HPCommunityShareProtocol)];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        default:
+            break;
+    }
 }
 
 

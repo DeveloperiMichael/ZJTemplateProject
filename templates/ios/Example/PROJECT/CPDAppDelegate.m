@@ -10,11 +10,10 @@
 #import "CPDViewController.h"
 #import <ZJModuleService/ZJModuleService.h>
 #import <ZJAppConfig/ZJAppConfig.h>
-#ifdef NSFoundationVersionNumber_iOS_9_x_Max
-#import <UserNotifications/UserNotifications.h>
-#import <ZJAppConfig/ZJAppConfig.h>
 #import <WPLogin/WPLoginManager.h>
 #import <WPGlobal/WPGlobal.h>
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+#import <UserNotifications/UserNotifications.h>
 
 #endif
 
@@ -33,7 +32,7 @@
     
     
     
-    [[ZJAppConfiguration sharedInstance] zj_setupTarget:ZJTargetTypeWPUser environment:ZJEnvironmentTypeDevelopment];
+    [[ZJAppConfiguration sharedInstance] zj_setupTarget:ZJTargetTypeWPUser environment:ZJEnvironmentTypeInternalTest];
     
     [self setLoginRootViewController];
     
