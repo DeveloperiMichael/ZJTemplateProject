@@ -1,14 +1,15 @@
 //
-//  CPDAppDelegate.m
-//  PROJECT
+//  WPAppDelegate.m
+//  WPPropertService
 //
-//  Created by PROJECT_OWNER on TODAYS_DATE.
-//  Copyright (c) TODAYS_YEAR PROJECT_OWNER. All rights reserved.
+//  Created by zhangjiong on 09/29/2019.
+//  Copyright (c) 2019 zhangjiong. All rights reserved.
 //
 
 #import "CPDAppDelegate.h"
-#import "CPDViewController.h"
+#import "WPViewController.h"
 #import <ZJModuleService/ZJModuleService.h>
+#import <IQKeyboardManager/IQKeyboardManager.h>
 #import <ZJAppConfig/ZJAppConfig.h>
 #import <WPLogin/WPLoginManager.h>
 #import <WPGlobal/WPGlobal.h>
@@ -27,17 +28,20 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
+    
     //设置 rootViewController
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    
-    
-    
-    [[ZJAppConfiguration sharedInstance] zj_setupTarget:ZJTargetTypeWPUser environment:ZJEnvironmentTypeInternalTest];
-    
     [self setLoginRootViewController];
-    
     //[self setUnloginRootViewController];
     
+    // 配置环境
+    [[ZJAppConfiguration sharedInstance] zj_setupTarget:ZJTargetTypeWPUser environment:ZJEnvironmentTypeDevelopment];
+    
+    // 配置键盘
+    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
+    manager.enable = YES;
+    manager.shouldResignOnTouchOutside = YES;
+    manager.shouldToolbarUsesTextFieldTintColor = YES;
     
     [self.window makeKeyAndVisible];
     return YES;
@@ -55,8 +59,9 @@
     } else {
         [[ZJAppConfiguration sharedInstance] zj_setUserToken:[WPUserManager wp_token]];
         
-        id<ZJAppHomeProtocol> appHome = [ZJServiceManager createServiceWithProtocol:@protocol(ZJAppHomeProtocol)];
-        self.window.rootViewController = [appHome setupRootViewController];
+        //        id<ZJAppHomeProtocol> appHome = [ZJServiceManager createServiceWithProtocol:@protocol(ZJAppHomeProtocol)];
+        //        self.window.rootViewController = [appHome setupRootViewController];
+        [self setUnloginRootViewController];
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidLoginSuccess:) name:kWPDidUserLoginSuccessNotification object:nil];
@@ -64,7 +69,7 @@
 }
 
 - (void)setUnloginRootViewController {
-    CPDViewController *vc = [[CPDViewController alloc] init];
+    WPViewController *vc = [[WPViewController alloc] init];
     UINavigationController *nav;
     nav = [[UINavigationController alloc] initWithRootViewController:vc];
     self.window.rootViewController = nav;
@@ -72,8 +77,9 @@
 
 - (void)appDidLoginSuccess:(NSNotification *)noti {
     if (noti.object) {
-        id<ZJAppHomeProtocol> appHome = [ZJServiceManager createServiceWithProtocol:@protocol(ZJAppHomeProtocol)];
-        self.window.rootViewController = [appHome setupRootViewController];
+        //        id<ZJAppHomeProtocol> appHome = [ZJServiceManager createServiceWithProtocol:@protocol(ZJAppHomeProtocol)];
+        //        self.window.rootViewController = [appHome setupRootViewController];
+        [self setUnloginRootViewController];
     }
 }
 
