@@ -13,6 +13,7 @@
 #import <ZJAppConfig/ZJAppConfig.h>
 #import <WPLogin/WPLoginManager.h>
 #import <WPGlobal/WPGlobal.h>
+#import <WPWeakServiceComponent/WPWeakServiceComponent.h>
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
 
@@ -42,6 +43,9 @@
     manager.enable = YES;
     manager.shouldResignOnTouchOutside = YES;
     manager.shouldToolbarUsesTextFieldTintColor = YES;
+    
+    // 资源下载
+     [[WPResourceDownloadManager sharedInstance] downloadResource];
     
     [self.window makeKeyAndVisible];
     return YES;
