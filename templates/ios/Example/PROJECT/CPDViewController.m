@@ -7,7 +7,7 @@
 //
 
 #import "CPDViewController.h"
-
+#import <ZJModuleService/ZJModuleService.h>
 
 @interface CPDViewController ()<UITableViewDelegate,UITableViewDataSource>
 
