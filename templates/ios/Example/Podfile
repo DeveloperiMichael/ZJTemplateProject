@@ -18,8 +18,8 @@ target '${POD_NAME}_Example' do
   pod 'WPWeakServiceComponent', :git => 'https://gitee.com/developermichael/WPWeakServiceComponent.git'
   pod 'WPGlobal', :git => 'https://gitee.com/developermichael/WPGlobal.git'
   pod 'WPRequestManager', :git => 'https://gitee.com/developermichael/WPRequestManager.git'
-pod 'WPLeeLinSDK', :git => 'https://gitee.com/developermichael/WPLeeLinSDK.git'
-
+  pod 'WPLeeLinSDK', :git => 'https://gitee.com/developermichael/WPLeeLinSDK.git'
+  pod 'JPush'
 
   target '${POD_NAME}_Tests' do
     inherit! :search_paths

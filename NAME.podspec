@@ -21,11 +21,11 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://gitee.com/developermichael/${POD_NAME}'
+  s.homepage         = 'http://47.111.155.56:8800/smcaiot/IOS/${POD_NAME}'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'developermichael' => '${USER_EMAIL}' }
-  s.source           = { :git => 'https://gitee.com/developermichael/${POD_NAME}.git', :tag => s.version.to_s }
+  s.source           = { :git => 'http://47.111.155.56:8800/smcaiot/IOS/${POD_NAME}.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '9.0'
