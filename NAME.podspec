@@ -40,6 +40,7 @@ TODO: Add long description of the pod here.
   s.dependency 'WPGlobal'
   s.dependency 'ZJAppConfig'
   s.dependency 'WPRequestManager'
+  s.dependency 'WPLogin'
 
   s.requires_arc = true
   

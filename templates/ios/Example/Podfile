@@ -2,24 +2,22 @@
 inhibit_all_warnings!
 
 source 'https://github.com/CocoaPods/Specs.git'
-source 'https://gitee.com/developermichael/ZJPrivateSpecs.git'
+source 'http://47.111.155.56:8800/smcaiot/IOS/WPSpecs.git'
 
 platform:ios, '9.0'
 
 target '${POD_NAME}_Example' do
   pod '${POD_NAME}', :path => '../'
 
-  pod 'ZJModuleService', :git => 'https://gitee.com/developermichael/ZJModuleService.git'
-  pod 'ZJNetwork', :git => 'https://gitee.com/developermichael/ZJNetwork.git'
-  pod 'WPKit', :git => 'https://gitee.com/developermichael/WPKit.git'
-  pod 'ZJAppConfig', :git => 'https://gitee.com/developermichael/ZJAppConfig.git'
-  pod 'WPLogin', :git => 'https://gitee.com/developermichael/WPLogin.git'
-  pod 'ZJFoundation', :git => 'https://gitee.com/developermichael/ZJFoundation.git'
-  pod 'WPWeakServiceComponent', :git => 'https://gitee.com/developermichael/WPWeakServiceComponent.git'
-  pod 'WPGlobal', :git => 'https://gitee.com/developermichael/WPGlobal.git'
-  pod 'WPRequestManager', :git => 'https://gitee.com/developermichael/WPRequestManager.git'
-  pod 'WPLeeLinSDK', :git => 'https://gitee.com/developermichael/WPLeeLinSDK.git'
-  pod 'JPush'
+  pod 'ZJModuleService', :git => 'http://47.111.155.56:8800/smcaiot/IOS/ZJModuleService.git'
+  pod 'ZJNetwork', :git => 'http://47.111.155.56:8800/smcaiot/IOS/ZJNetwork.git'
+  pod 'WPKit', :git => 'http://47.111.155.56:8800/smcaiot/IOS/WPKit.git'
+  pod 'ZJAppConfig', :git => 'http://47.111.155.56:8800/smcaiot/IOS/ZJAppConfig.git'
+  pod 'WPLogin', :git => 'http://47.111.155.56:8800/smcaiot/IOS/WPLogin.git'
+  pod 'ZJFoundation', :git => 'http://47.111.155.56:8800/smcaiot/IOS/ZJFoundation.git'
+  pod 'WPGlobal', :git => 'http://47.111.155.56:8800/smcaiot/IOS/WPGlobal.git'
+  pod 'WPRequestManager', :git => 'http://47.111.155.56:8800/smcaiot/IOS/WPRequestManager.git'
+  
 
   target '${POD_NAME}_Tests' do
     inherit! :search_paths
